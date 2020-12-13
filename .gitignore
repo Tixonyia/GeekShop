@@ -1,4 +1,4 @@
+/media/
 .idea
 db.sqlite3
 wsgi.py
-media
