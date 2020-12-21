@@ -1,24 +1,19 @@
 from django.shortcuts import render
+
 from mainapp.models import Product, ProductCategory
 
 
-def index(request):
-    return render(request, 'mainapp/index.html')
+def main(request):
+    content = {
+        'title': 'GeekShop'
+    }
+    return render(request, 'mainapp/index.html', content)
 
 
-def products(request):
-    context = {
+def products(request, id=None):
+    content = {
+        'title': 'GeekShop - Категории',
+        'categories': ProductCategory.objects.all(),
         'products': Product.objects.all(),
-        'buttons': ProductCategory.objects.all()
     }
-    return render(request, 'mainapp/products.html', context)
-
-
-def menu_buttons(request):
-    context = {
-        'buttons': ProductCategory.objects.all()
-    }
-    return render(request, 'mainapp/products.html', context)
-
-
-
+    return render(request, 'mainapp/products.html', content)
